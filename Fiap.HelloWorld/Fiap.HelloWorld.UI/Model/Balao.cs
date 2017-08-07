@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace Fiap.HelloWorld.UI.Model
 {
-    class Moto : Veiculo
+    class Balao : Veiculo, IVoador
     {
-        public bool Bau { get; set; }
 
-        public Moto(string placa):base(placa)
+        //Construtor
+        public Balao(string placa) : base(placa)
         {
-
         }
 
+        //Métodos
         public override void Acelerar()
         {
-            Console.WriteLine("Moto Acelerando");
+            Console.WriteLine("Ventando");
         }
 
-        public override void Frear()
+        public void Voar()
         {
-            Console.WriteLine("Moto parando");
+            Console.WriteLine("Balão voando");
         }
     }
 }

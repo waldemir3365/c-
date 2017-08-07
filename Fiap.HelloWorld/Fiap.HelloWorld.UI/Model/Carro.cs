@@ -16,5 +16,11 @@ namespace Fiap.HelloWorld.UI.Model
         {
             
         }
+
+        //Método
+        public override void Acelerar()
+        {
+            Console.WriteLine("Carro Acelerando");
+        }
     }
 }
