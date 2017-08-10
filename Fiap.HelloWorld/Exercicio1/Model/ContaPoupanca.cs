@@ -10,7 +10,7 @@ namespace Fiap.Banco.Model
     {
         public decimal Taxa { get; set; }
 
-        readonly decimal _rendimento;
+        private readonly decimal _rendimento;
 
         
 
@@ -20,13 +20,9 @@ namespace Fiap.Banco.Model
             _rendimento += valor;
         }
 
-        public ContaPoupanca()
-        {
-        }
-
         public override void Depositar(decimal valor)
         {
-            this.Saldo += valor;  
+            Saldo += valor;  
         }
 
 
@@ -35,22 +31,21 @@ namespace Fiap.Banco.Model
         public override void Retirar(decimal valor)
         {
 
-            valor += this.Taxa;
+            valor += Taxa;
 
-            if (this.Saldo <= 0 || valor > this.Saldo)
+            if (Saldo <= 0 || valor > Saldo)
             {
                 throw new Exception("saldo insuficiente para saque !");
             }
-            else
-            {
-                this.Saldo -= valor;
-                Console.WriteLine("Saldo atual : " + this.Saldo);
-            }
+           
+                Saldo -= valor;
+                Console.WriteLine("Saldo atual : " + Saldo);
+            
         }
 
         public decimal CalculaRetornoInvestimento()
         {
-            return this.Saldo * this._rendimento;
+            return Saldo * _rendimento;
         }
     }
 }

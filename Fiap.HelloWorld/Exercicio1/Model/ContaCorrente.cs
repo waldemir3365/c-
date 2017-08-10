@@ -6,27 +6,26 @@ using System.Threading.Tasks;
 
 namespace Fiap.Banco.Model
 {
-    class ContaCorrente : Conta
+    //sealed não pode ser herdada
+    sealed class ContaCorrente : Conta
     {
         public TipoConta TipoConta { get; set; }
 
 
-
         public override void Depositar(decimal valor)
         {
-            this.Saldo += valor;
+            Saldo += valor;
         }
 
         public override void Retirar(decimal valor)
         {
-            if (this.TipoConta.Equals("Comum") && this.Saldo < 0)
+            if (TipoConta == TipoConta.Comum && Saldo < valor)
             {
                 throw new Exception("valor não pode ser sacado devido ao saldo ser negativo !");
             }
-            else
-            {
-                this.Saldo -= valor; 
-            }
+    
+                Saldo -= valor; 
+            
         }
     }
 }

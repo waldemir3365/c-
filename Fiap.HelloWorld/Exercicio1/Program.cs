@@ -14,24 +14,36 @@ namespace Exercicio1
 
             // instanciar contacorrente 
 
-            ContaCorrente cc = new ContaCorrente();
+            var cc = new ContaCorrente()
+            {
+                Agencia = 123,
+                Numero = 321,
+                DataAbertura = DateTime.Now,
+                TipoConta = TipoConta.Comum,
+                Saldo = 1000
 
-            cc.Depositar(100);
-
-            Console.WriteLine(cc.Saldo);
-           
+            };
 
             // INSTANCIAR CONTA POUPANÇA 
 
+            var cp = new ContaPoupanca(0.006m)
+            {
+                Agencia = 123,
+                Numero = 521,
+                DataAbertura = DateTime.Now,
+                Saldo = 500,
+                Taxa = 10
 
-            /*
-             * ContaPoupanca cp = new ContaPoupanca();
-                        cp.Agencia =
-                        cp.DataAbertura  =
-                        cp.Numero = 
-                        cp.Saldo = 
-                        cp.Taxa = 
-                        */
+
+            };
+
+            cc.Depositar(500);
+            cc.Retirar(100);
+            Console.WriteLine(cp.CalculaRetornoInvestimento());
+            Console.WriteLine(cc.Saldo);
+            Console.ReadLine();//parar a aplicação.....
+
+                        
         }
     }
 }
